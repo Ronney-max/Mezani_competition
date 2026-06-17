@@ -12,13 +12,14 @@ frontend_urls = [
 ]
 CORS(app, resources={r"/api/*": {"origins": frontend_urls}})
 
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 587
+app.config["MAIL_USE_TLS"] = True
+app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
+app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
 
 mail = Mail(app)
+
 
 @app.route("/")
 def health_check():
@@ -26,6 +27,7 @@ def health_check():
         "success": True,
         "message": "Mezani Competition API is running"
     })
+
 
 @app.route("/api/register", methods=["POST"])
 def register():
