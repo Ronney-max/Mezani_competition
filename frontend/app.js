@@ -28,7 +28,10 @@ async function registerParticipant(formData) {
     body: JSON.stringify(formData),
   });
 
-  const result = await response.json();
+  const contentType = response.headers.get("content-type") || "";
+  const result = contentType.includes("application/json")
+    ? await response.json()
+    : { message: await response.text() };
 
   if (!response.ok) {
     throw new Error(result.message || "Registration failed.");
