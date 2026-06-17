@@ -17,6 +17,7 @@ app.config["MAIL_PORT"] = 587
 app.config["MAIL_USE_TLS"] = True
 app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
 app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
+app.config["MAIL_TIMEOUT"] = 10
 
 mail = Mail(app)
 
@@ -85,7 +86,14 @@ Age group: {age_group}
 Regards,
 Mezani Team
 """
-    mail.send(msg)
+    try:
+        mail.send(msg)
+    except Exception as error:
+        app.logger.exception("Failed to send confirmation email")
+        return jsonify({
+            "success": False,
+            "message": "Registration received, but the confirmation email could not be sent. Please check the email settings on Render."
+        }), 502
 
     return jsonify({
         "success": True,

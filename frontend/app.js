@@ -4,6 +4,13 @@ const API_BASE_URL = window.location.hostname.endsWith("vercel.app")
   : RENDER_API_URL;
 
 const form = document.getElementById("registrationForm");
+const submitButton = document.getElementById("submitButton");
+const formStatus = document.getElementById("formStatus");
+
+function showStatus(message, type = "info") {
+  formStatus.textContent = message;
+  formStatus.className = `form-status ${type}`;
+}
 
 function getFormData() {
   const data = new FormData(form);
@@ -44,11 +51,18 @@ form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   try {
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+    showStatus("Sending your registration...", "info");
+
     const result = await registerParticipant(getFormData());
-    alert(result.message);
+    showStatus(result.message, "success");
     form.reset();
   } catch (error) {
     console.error(error);
-    alert(error.message || "Registration failed.");
+    showStatus(error.message || "Registration failed.", "error");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "Register";
   }
 });
