@@ -1,23 +1,16 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "frontend/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "https://mezani-competition.onrender.com/api/$1"
+      "source": "/api/:path*",
+      "destination": "https://mezani-competition.onrender.com/api/:path*"
     },
     {
-      "src": "/",
-      "dest": "/frontend/index.html"
+      "source": "/",
+      "destination": "/frontend/index.html"
     },
     {
-      "src": "/(.*)",
-      "dest": "/frontend/$1"
+      "source": "/:path*",
+      "destination": "/frontend/:path*"
     }
   ]
 }
