@@ -1,0 +1,213 @@
+/* Background */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #006400 0%,
+        #0b7a0b 30%,
+        #c9a227 65%,
+        #8b0000 100%
+    );
+
+    min-height: 100vh;
+}
+
+/* Main Form Container */
+.container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 30px;
+
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+
+    border-radius: 30px;
+    border: 2px solid rgba(255,255,255,0.25);
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+/* Main Title */
+.main-title {
+    text-align: center;
+
+    color: #ffffff;
+    font-size: 42px;
+    font-weight: bold;
+
+    margin-bottom: 30px;
+
+    text-shadow:
+        0 0 10px #ffd700,
+        0 0 20px #ffd700;
+}
+
+/* Section Boxes */
+.section-box {
+    background: rgba(255,255,255,0.08);
+
+    border: 2px solid rgba(255,215,0,0.5);
+
+    border-radius: 25px;
+
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+/* Section Headings */
+.section-box h3 {
+    text-align: center;
+    color: #ffd700;
+
+    font-size: 24px;
+    margin-bottom: 20px;
+
+    border-bottom: 2px solid rgba(255,215,0,0.4);
+    padding-bottom: 10px;
+}
+
+/* Labels */
+label {
+    display: block;
+
+    color: white;
+    font-weight: bold;
+
+    margin-top: 10px;
+    margin-bottom: 6px;
+}
+
+/* Text Inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 15px;
+
+    background: rgba(255,255,255,0.95);
+
+    font-size: 16px;
+
+    margin-bottom: 15px;
+}
+
+/* Radio Sections */
+.category-group,
+.age-group {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin-top: 10px;
+}
+
+.category-group label,
+.age-group label {
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: white;
+    font-size: 18px;
+}
+
+/* Radio Buttons */
+input[type="radio"] {
+    transform: scale(1.3);
+    accent-color: #ffd700;
+}
+
+/* Register Button */
+button {
+
+    width: 100%;
+
+    padding: 16px;
+
+    border: none;
+    border-radius: 15px;
+
+    background: linear-gradient(
+        90deg,
+        #8b0000,
+        #c00000,
+        #006400
+    );
+
+    color: white;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 15px #ffd700,
+        0 0 25px #ffd700;
+}
+
+.experience-section {
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid rgba(255,215,0,0.3);
+}
+
+.experience-section label {
+    display: block;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.experience-section input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    background: rgba(255,255,255,0.95);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .container {
+        width: 92%;
+        padding: 20px;
+    }
+
+    .main-title {
+        font-size: 30px;
+    }
+
+    .section-box h3 {
+        font-size: 20px;
+    }
+
+    .category-group label,
+    .age-group label {
+        font-size: 16px;
+    }
+}

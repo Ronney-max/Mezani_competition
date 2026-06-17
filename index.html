@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mezani Barista Competition 2026</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+       <h1 class="main-title">Mezani Barista Competition 2026</h1>
+  
+
+  <form id="registrationForm">
+
+    
+    <div class="section-box">
+        <h3>Personal Information</h3>
+
+        <label>Full Name</label>
+        <input type="text" name="name" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Phone Number</label>
+        <input type="tel" name="phone" required>
+
+        <label>Gender</label>
+        <input type="text" name="gender" required>
+    </div>
+
+    
+    <div class="section-box">
+        <h3>Competition Category</h3>
+
+        <div class="category-group">
+            <label>
+                <input type="radio" name="category" value="Barista Competition">
+                Barista Competition
+            </label>
+
+            <label>
+                <input type="radio" name="category" value="Brewers Competition">
+                Brewers Competition
+            </label>
+
+            <label>
+                <input type="radio" name="category" value="Latte Art Competition">
+                Latte Art Competition
+            </label>
+
+            <div class="experience">
+                <label for="experience">Years of Experience</label>
+                <input
+                     type="number"
+                     id="experience"
+                     name="experience"
+                     min="0"
+                     max="50"
+                     placeholder="Enter years of experience"
+                     required>
+            </div>
+        </div>
+    </div>
+
+    <!-- Age Group -->
+    <div class="section-box">
+        <h3>Age Group</h3>
+
+        <div class="age-group">
+            <label>
+                <input type="radio" name="age_group" value="18-25">
+                18-25 yrs
+            </label>
+
+            <label>
+                <input type="radio" name="age_group" value="26-35">
+                26-35 yrs
+            </label>
+
+            <label>
+                <input type="radio" name="age_group" value="36-45">
+                36-45 yrs
+            </label>
+
+            <label>
+                <input type="radio" name="age_group" value="46+">
+                46+ yrs
+            </label>
+        </div>
+    </div>
+
+    <input type="hidden" name="Confirmation" value="Thank You">
+
+    <button type="submit">Register</button>
+
+</form>
+
+<script>
+document.getElementById("registrationForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = {
+        name: document.querySelector('[name="name"]').value,
+        email: document.querySelector('[name="email"]').value,
+        phone: document.querySelector('[name="phone"]').value,
+        gender: document.querySelector('[name="gender"]').value,
+        category: document.querySelector('input[name="category"]:checked')?.value,
+        experience: document.querySelector('[name="experience"]').value,
+        age_group: document.querySelector('input[name="age_group"]:checked')?.value
+        
+    };
+
+    try {
+        const response = await fetch("http://127.0.0.1:5000/api/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+        alert(result.message);
+
+        document.getElementById("registrationForm").reset();
+
+    } catch (error) {
+        console.error(error);
+        alert("Registration failed.");
+    }
+});
+</script>
+</body>
+</html>
+
+</div>
