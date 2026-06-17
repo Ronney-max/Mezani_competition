@@ -20,7 +20,7 @@ app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 
 mail = Mail(app)
 
-@app.route("/api/register", methods=["POST"])
+@app.route("https://mezani-competition.onrender.com/api/register", methods=["POST"])
 def register():
     data = request.json
 
