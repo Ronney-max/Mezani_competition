@@ -3,14 +3,6 @@
     {
       "source": "/api/:path*",
       "destination": "https://mezani-competition.onrender.com/api/:path*"
-    },
-    {
-      "source": "/",
-      "destination": "/frontend/index.html"
-    },
-    {
-      "source": "/:path*",
-      "destination": "/frontend/:path*"
     }
   ]
 }
