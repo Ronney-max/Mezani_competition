@@ -1,4 +1,4 @@
 Flask
+Flask-Cors
 Flask-Mail
-flask-cors
 gunicorn
