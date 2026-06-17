@@ -1,10 +1,15 @@
 from flask import Flask, request, jsonify
 from flask_mail import Mail, Message
 from flask_cors import CORS
-import os
 
 app = Flask(__name__)
-CORS(app, origins=["https://mezani-barista.netlify.app"])
+CORS(
+    app,
+    resources={r"/*": {"origins": "*"}},
+    supports_credentials=False,
+    allow_headers=["Content-Type", "Authorization"],
+    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    )
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
@@ -16,10 +21,7 @@ mail = Mail(app)
 
 @app.route("/api/register", methods=["POST"])
 def register():
-    print("REGISTER ROUTE HIT")
-    data = request.get_json
-    print(data)
-    return {"message": "success"}, 200
+    data = request.json
 
     name = data.get("name")
     email = data.get("email")
@@ -42,13 +44,8 @@ Mezani Team
 
     return jsonify({
         "success": True,
-        "message": "Registration received"
+        "message": "Confirmation email sent"
     })
 
-@app.route("/")
-def home():
-    return "Backend is running"
-
 if __name__ == "__main__":
-    app.run(debug=True)
-
+    app.run(debug=True, port=5000)
