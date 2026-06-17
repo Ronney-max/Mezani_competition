@@ -17,7 +17,9 @@ mail = Mail(app)
 @app.route("/api/register", methods=["POST"])
 def register():
     print("REGISTER ROUTE HIT")
-    data = request.json
+    data = request.get_json
+    print(data)
+    return {"message": "success"}, 200
 
     name = data.get("name")
     email = data.get("email")
